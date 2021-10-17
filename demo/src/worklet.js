@@ -29,20 +29,20 @@ function randomColor () {
 
 class CheckerPaint {
   paint(ctx, geom, styleMap) {
-    const [width, height] = [15, 35];
     const amount = 100;
     const respectBorders = true;
     const padding = 0;
+    const [baseWidth, baseHeight] = [15, 35];
 
     for (let i = 0; i < amount; i++) {
       const color = randomColor();
-      // const margin = Random.wholeRandom(100);
-      // const angle = Random.randSignRandom(1.5) * Math.PI / 180;
-      // const scale = 1 + Random.randSignRandom(0.05);
+      const scale = 1 + Random.randSignRandom(0.5);
+      const [width, height] = [baseWidth * scale, baseHeight * scale];
       let [x, y] = [ 
         Random.rangeRandom(geom.width),
         Random.rangeRandom(geom.height)
       ];
+      const angle = Random.randSignRandom(3) * Math.PI / 180;
 
       if(respectBorders) {
         x = Math.min(geom.width - width - padding, x);
@@ -52,11 +52,15 @@ class CheckerPaint {
       
       ctx.beginPath();
 
-      // ctx.rotate(angle);
-      // ctx.scale(1, scale);
+      ctx.translate((x + width)/2, (y + height)/2);
+      ctx.rotate(angle);
+      ctx.translate((x + width)/2 * -1, (y + height)/2 * -1);
+
       ctx.fillStyle = color;
       ctx.rect(x, y, width, height);
       ctx.fill();
+
+      ctx.rotate(-angle);
     }
   }
 }
