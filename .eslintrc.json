@@ -5,8 +5,11 @@
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 13,
+        "ecmaVersion": "latest",
         "sourceType": "module"
+    },
+    "ecmaFeatures": {
+        "impliedStrict": true
     },
     "rules": {
         "indent": [
@@ -14,7 +17,7 @@
             "tab"
         ],
         "linebreak-style": [
-            "error",
+            "warn",
             "windows"
         ],
         "quotes": [
