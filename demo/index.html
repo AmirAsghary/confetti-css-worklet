@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="./src/styles.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>Heading 1</h1>
+    </header>
+
+    <script>
+      if ("paintWorklet" in CSS) {
+        CSS.paintWorklet.addModule("./src/worklet.js");
+      } else {
+        alert("you need support for css paint api");
+      }
+    </script>
+  </body>
+</html>
