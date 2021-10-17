@@ -1,0 +1,29 @@
+{
+  "name": "confetti-css-worklet",
+  "version": "0.1.0",
+  "description": "confetti generator worklet for CSS",
+  "main": "src/worklet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmirAsghary/confetti-css-worklet.git"
+  },
+  "keywords": [
+    "css",
+    "worklet",
+    "confetti",
+    "houdini",
+    "paint"
+  ],
+  "author": "Amir Asghary",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AmirAsghary/confetti-css-worklet/issues"
+  },
+  "homepage": "https://github.com/AmirAsghary/confetti-css-worklet#readme",
+  "devDependencies": {
+    "eslint": "^8.0.1"
+  }
+}
