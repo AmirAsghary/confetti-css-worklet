@@ -8,10 +8,14 @@
   </head>
 
   <body>
-    <header>
-      <h1>Heading 1</h1>
-    </header>
+    <article class="card">
+      <div class="_inner">
+        <h1>CSS Confetti Paint Worklet</h1>
+        <a href="https://github.com/AmirAsghary"><h2>Amir Asghary</h2></a>
+      </div> 
+    </article>
 
+    <script type="module" src="src/types.js"></script>
     <script>
       if ("paintWorklet" in CSS) {
         CSS.paintWorklet.addModule("./src/worklet.js");
