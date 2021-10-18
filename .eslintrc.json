@@ -16,12 +16,25 @@
             "error",
             "tab"
         ],
+        "space-in-parens": [
+            "warn",
+            "never"
+        ],
+        "space-before-function-paren": [
+            "warn",
+            "always"
+        ],
+        "eqeqeq": [
+            "warn",
+            "always"
+        ],
+        "no-var": "error",
         "linebreak-style": [
             "warn",
             "windows"
         ],
         "quotes": [
-            "error",
+            "warn",
             "single"
         ],
         "semi": [
