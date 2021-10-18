@@ -23,9 +23,14 @@ window.CSS.registerProperty({
 	inherits: false,
 	initialValue: '0px'
 });
+// TODO
+// syntax should be <length>+
+// but i couldn't get it working
+// reported it as a bug:
+// https://bugs.chromium.org/p/chromium/issues/detail?id=1260831
 window.CSS.registerProperty({
 	name: baseDimentionsVar,
-	syntax: '<length>+',
+	syntax: '*',
 	inherits: false,
 	initialValue: '35px 15px'
 });
