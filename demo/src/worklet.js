@@ -1,3 +1,8 @@
+const amountVar = '--confetti-amount';
+const respectBordersVar = '--confetti-respect-borders';
+const paddingVar = '--confetti-padding';
+const baseDimentionsVar = '--confetti-dimentions';
+
 class Random {
 	static rangeRandom (range) {
 		return Math.random() * range;
@@ -13,10 +18,6 @@ class Random {
 
 		return Random.rangeRandom(range * 2) - range;
 	}
-
-	static random () {
-		return Math.random();
-	}
 }
 
 function randomColor () {
@@ -27,13 +28,29 @@ function randomColor () {
   )`;
 }
 
+function extractValue (str) {
+	return str.match(/\d+/g)[0];
+}
+function extractValueMulti (str) {
+	return str.split(' ')
+		.filter(s => s)
+		.map(val => extractValue(val));
+}
 class CheckerPaint {
-	paint(ctx, geom, styleMap) {
-		console.log(styleMap);
-		const amount = 100;
-		const respectBorders = true;
-		const padding = 0;
-		const [baseWidth, baseHeight] = [15, 35];
+	static get inputProperties () { 
+		return [
+			amountVar,
+			respectBordersVar,
+			paddingVar,
+			baseDimentionsVar
+		]; 
+	}
+
+	paint (ctx, geom, props) {
+		const amount = props.get(amountVar).value || 50;
+		const respectBorders = props.get(respectBordersVar).value === 1 || true;
+		const padding = parseInt(extractValue(props.get(paddingVar).toString())) || 0;
+		const [baseWidth, baseHeight] = extractValueMulti(props.get(baseDimentionsVar).toString()).map(val => parseInt(val)) || [15, 35];
 
 		for (let i = 0; i < amount; i++) {
 			const color = randomColor();
@@ -45,9 +62,8 @@ class CheckerPaint {
 			];
 			const angle = Random.randSignRandom(3) * Math.PI / 180;
 
-			if(respectBorders) {
+			if(respectBorders) { 
 				x = Math.min(geom.width - width - padding, x);
-
 				y = Math.min(geom.height - height - padding, y);
 			}
       
