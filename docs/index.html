@@ -1,27 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <title>Parcel Sandbox</title>
+    <title>CSS Confetti Paint Worklet - Amir Asghary</title>
+
+    <meta name="title" content="CSS Confetti Paint Worklet by Amir Asghary">
+    <meta name="description" content="CSS confetti generator, built with Houdini and paint worklets.">
+    <meta property="twitter:title" content="CSS Confetti Paint Worklet by Amir Asghary">
+    <meta property="twitter:description" content="CSS confetti generator, built with Houdini and paint worklets.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amirasghary.github.io/confetti-css-worklet/">
+    <meta property="og:title" content="CSS Confetti Paint Worklet by Amir Asghary">
+    <meta property="og:description" content="CSS confetti generator, built with Houdini and paint worklets.">
     <meta charset="UTF-8" />
 
     <link rel="stylesheet" href="./src/styles.css">
   </head>
 
   <body>
-    <article class="card">
-      <div class="_inner">
-        <h1>CSS Confetti Paint Worklet</h1>
-        <a href="https://github.com/AmirAsghary"><h2>Amir Asghary</h2></a>
-      </div> 
-    </article>
+    <main>
+      <article class="card demo-container">
+        <section class="_inner">
+          <h1>CSS Confetti Paint Worklet</h1>
+          <h2>Amir Asghary</h2>
+        </section>
+        <nav class="social-links">
+          <a href="https://github.com/AmirAsghary" target="blank">Github</a>
+          <a href="https://www.linkedin.com/in/amirasghary/" target="blank">Linkedin</a>
+          <a href="mailto:itsAmirAsghary@gmail.com" target="blank">Email</a>
+        </nav>
+      </article>
 
-    <script type="module" src="src/types.js"></script>
+      <article class="modal nosupport-message">
+        <p>
+          Your browser does not support the features necessary for this demo to work. <br/>
+          Open <a href="https://caniuse.com/mdn-api_css_paintworklet" target="blank">this link</a> to check for browsers' support level.
+        </p>
+      </article>
+    </main>
+
     <script>
       if ("paintWorklet" in CSS) {
+        const confettiTypesScript = document.createElement("script");
+        confettiTypesScript.setAttribute("type", "module");
+        confettiTypesScript.setAttribute("src", "src/types.js");
+        document.body.appendChild(confettiTypesScript);
+
         CSS.paintWorklet.addModule("./src/worklet.js");
       } else {
-        alert("you need support for css paint api");
+        document.querySelector('.nosupport-message').style.display = 'flex';
       }
     </script>
+
+    <noscript class="modal noscript-message">
+      You need to enable javascript in your browser to view the contents of this page.
+    </noscript>
   </body>
 </html>

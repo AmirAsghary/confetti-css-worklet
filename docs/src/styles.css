@@ -9,6 +9,9 @@ body {
   margin: 0;
   background-color: var(--color-background);
 }
+h1, h2 {
+  background-color: white;
+}
 h1 {
   font-size: 1.5rem;
 }
@@ -17,27 +20,74 @@ h2 {
   margin-block: 8px;
 }
 
-article.card {
-  --confetti-dimentions: 10px 20px;
-  --confetti-padding: 20px;
-  --confetti-amount: 50;
-
-  position: relative;
-  height: 400px;
-  width: calc(100vw - 300px);
-  margin-inline: auto;
-  margin-top: 100px;
+.card {
   padding: 16px;
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  background-image: paint(confetti);
   background-color: var(--color-surface);
-  box-shadow: 0px 4px 12px -4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.1);
+}
+.modal {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
 }
 
-article.card > ._inner {
+.demo-container {
+  --spacing-container-margin: 152px;
+
+  --confetti-dimentions: 10px 20px;
+  --confetti-padding: 20px;
+  --confetti-amount: 50;  
+
+  position: relative;
+  height: 400px;
+  width: calc(100vw - 2 * var(--spacing-container-margin));
+  margin-inline: auto;
+  margin-top: var(--spacing-container-margin);
+  background-image: paint(confetti);
+}
+.demo-container > ._inner {
   position: absolute;
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  white-space: nowrap;
+}
+
+.social-links {
+  position: absolute;
+  bottom: -36px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.noscript-message {
+}
+.nosupport-message {
+  display: none;
+  text-align: center;
+  line-height: 2rem;
+}
+
+@media screen and (max-width: 1280px) {
+  .demo-container {
+    --spacing-container-margin: 88px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .demo-container {
+    --spacing-container-margin: 64px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .demo-container {
+    --spacing-container-margin: 36px;
+  }
 }
