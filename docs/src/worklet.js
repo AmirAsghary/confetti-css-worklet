@@ -36,7 +36,7 @@ function extractValueMulti (str) {
 		.filter(s => s)
 		.map(val => extractValue(val));
 }
-class CheckerPaint {
+class ConfettiPaint {
 	static get inputProperties () { 
 		return [
 			amountVar,
@@ -83,4 +83,4 @@ class CheckerPaint {
 }
 
 // eslint-disable-next-line no-undef
-registerPaint('confetti', CheckerPaint);
+registerPaint('confetti', ConfettiPaint);
