@@ -52,7 +52,7 @@ class CheckerPaint {
 		const padding = parseInt(extractValue(props.get(paddingVar).toString())) || 0;
 		const [baseWidth, baseHeight] = extractValueMulti(props.get(baseDimentionsVar).toString()).map(val => parseInt(val)) || [15, 35];
 
-		for (let i = 0; i < amount; i++) {
+		for (let i = 0; i < 0; i++) {
 			const color = randomColor();
 			const scale = 1 + Random.randSignRandom(0.5);
 			const [width, height] = [baseWidth * scale, baseHeight * scale];
@@ -67,8 +67,6 @@ class CheckerPaint {
 				y = Math.min(geom.height - height - padding, y);
 			}
       
-			ctx.beginPath();
-
 			ctx.translate((x + width)/2, (y + height)/2);
 			ctx.rotate(angle);
 			ctx.translate((x + width)/2 * -1, (y + height)/2 * -1);
@@ -79,6 +77,24 @@ class CheckerPaint {
 
 			ctx.rotate(-angle);
 		}
+
+		for (let i = 0; i < amount; i++) {
+			let [x] = [ 
+				Random.rangeRandom(geom.width),
+			];
+
+			let y = 100;
+			for (let i = 0; i <Random.wholeRandom(10) + 1; i++) {
+				ctx.beginPath();
+	
+				ctx.ellipse(x, y, 10, 17, Math.PI * 0.5, -0.15 * Math.PI, 1.15 * Math.PI);
+	
+				ctx.stroke();
+	
+				y += 18;
+			}
+		}
+		
 	}
 }
 
